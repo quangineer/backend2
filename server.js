@@ -8,7 +8,8 @@ app.use(express.json());
 
 //this is for server and browser to talk: middleware
 const cors = require("cors");
-app.use(cors({origin:["http://localhost:5000/"]}));
+// app.use(cors({origin:["http://localhost:5000/","https://quyensach2.onrender.com/"]}));
+app.use(cors());
 
 //create an URI to connect with mongoDB:
 const URI = "mongodb+srv://nguyenq25:u5w3j04xyYdscxGs@hoangquannguyen01.ld8e7x7.mongodb.net/hoangquannguyen-300371379";
@@ -36,6 +37,7 @@ const book = mongoose.model("Booklist", bookSchema);
 
 // 1. Send a GET request to get ALL BOOKS:
 app.get("/", async (req, res) => {
+    console.log("ABC");
   book
     .find()
     .then(function (data) {
